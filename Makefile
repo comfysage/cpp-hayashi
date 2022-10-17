@@ -10,7 +10,7 @@ OBJ       = $(SRC:.c=.o)
 MAIN      = ${SRC_DIR}/main.c
 INCLUDE   = -I$(SRC_DIR:./=)
 
-BIN       = ./hayashi
+BIN       = ./hayashi.out
 
 all: ${BIN}
 
