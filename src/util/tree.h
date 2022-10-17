@@ -59,14 +59,18 @@ struct Tree {
       this->indent(1);
     }
 
-    int l = this->i;
-    if (this->deltaI == 1) {
-      l--;
-    }
-    int h = 0;
-    while(h < l) {
-      printf("|");
-      h++;
+    if (n.t == T_INFO) {
+      printf("\n    ");
+    } else {
+      int l = this->i;
+      if (this->deltaI == 1) {
+        l--;
+      }
+      int h = 0;
+      while(h < l) {
+        printf("|");
+        h++;
+      }
     }
 
     if (this->deltaI == 1) {
@@ -78,6 +82,8 @@ struct Tree {
     printf(ANSI_COLOR_RESET "");
 
     printf("%s", n.capture().c_str());
+
+    if (n.t == T_INFO) printf("\n");
   }
 
   void indent(int n) {
