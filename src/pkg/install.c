@@ -2,8 +2,8 @@
 
 result::Result clone_pkg(Pkg &pkg) {
 result::Await("cloning pkg.");
-  if (path_exists(HAYASHI_ROOT + "/" + pkg.name)) return
-    result::Err(ERR_DIR_EXISTS, C_IGNORE);
+  if (path_exists(HAYASHI_ROOT + "/" + pkg.name)) 
+    result::Err(ERR_DIR_EXISTS, state.opts.force ? C_IGNORE : C_FAIL);
 
   if (state.config.shallow_clone) {
     runin(HAYASHI_ROOT, "git clone --depth 1 " + pkg.url + " -o " + pkg.name);
