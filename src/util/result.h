@@ -35,6 +35,23 @@ struct Result {
   }
 };
 
+struct ResultInfo : Result {
+  const std::string &v;
+  int &c = T_INFO;
+
+  ResultInfo(const std::string &v) : v(v) {
+    this->capture();
+  }
+  void toss() { }
+  void capture() {
+    // printf("\n -- %s --", this->v.c_str());
+    tree::Node n(v, c);
+    state.tree.add(n);
+  }
+
+};
+ResultInfo Info(std::string v);
+
 struct ResultAwait : Result {
   const std::string &v;
   int &c = T_NEW;

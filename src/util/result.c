@@ -15,6 +15,10 @@ void result::toss_process() {
   exit(1);
 }
 
+result::ResultInfo result::Info(std::string v) {
+  return result::ResultInfo(v);
+}
+
 result::ResultAwait result::Await() {
   return result::ResultAwait(STD_RESULT);
 }
