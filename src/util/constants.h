@@ -13,3 +13,4 @@ extern int T_SUCCESS;
 extern int T_FAIL;
 extern int T_IGNORE;
 extern int T_NEW;
+extern int T_INFO;

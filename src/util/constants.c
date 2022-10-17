@@ -12,3 +12,4 @@ int T_SUCCESS = C_SUCCESS;
 int T_FAIL = C_FAIL;
 int T_IGNORE = C_IGNORE;
 int T_NEW = C_IGNORE + 1;
+int T_INFO = C_IGNORE + 2;
