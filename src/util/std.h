@@ -9,4 +9,5 @@
 #include <vector>
 #include "util/span.h"
 #include <sys/stat.h>
+#include <initializer_list>
 

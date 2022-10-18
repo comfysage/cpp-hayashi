@@ -113,5 +113,7 @@ struct ResultErr : Result {
 ResultErr Err(std::string &v);
 ResultErr Err(std::string &v, int &c);
 
+ResultInfo printf(std::initializer_list<std::string> s);
+
 }
 

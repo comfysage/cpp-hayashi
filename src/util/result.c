@@ -11,7 +11,7 @@ std::string ERR_INVALID_COMMAND = "unqualified command.";
 
 void result::toss_process() {
   // throw std::runtime_error(v);
-  printf("\n\n");
+  printf({ "" });
   exit(1);
 }
 
@@ -41,3 +41,13 @@ result::ResultErr result::Err(std::string &v, int &c) {
 result::ResultErr err(v, c);
   return err;
 }
+
+result::ResultInfo result::printf(std::initializer_list<std::string> s) {
+  std::vector<std::string> s_v = s;
+  std::string v = "";
+  for (int i = 0; i < (int) s_v.size(); i++) {
+    v += s_v[i];
+  }
+  return result::ResultInfo(v);
+}
+
