@@ -2,7 +2,7 @@
 
 #include "util/std.h"
 #include "util/config.h"
-#include "util/tree.h"
+#include "util/forest.h"
 
 struct Opts {
   bool verbose = false;
@@ -17,7 +17,7 @@ struct State {
   std::string cmd;
   std::vector<std::string> argv;
 
-  tree::Tree tree;
+  forest::Forest forest;
 };
 
 extern struct State state;

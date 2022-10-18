@@ -27,7 +27,7 @@ result::ResultAwait result::Await(std::string v) {
 }
 
 result::ResultOk result::Ok() {
-  return result::ResultOk(STD_RESULT);
+  return result::ResultOk();
 }
 result::ResultOk result::Ok(std::string v) {
   return result::ResultOk(v);

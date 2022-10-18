@@ -5,12 +5,12 @@ result::Await("installing pkg.");
   for (size_t i = 0; i < state.argv.size(); i++) {
     pkg_install(state.argv[i]);
   }
-  return result::Ok("pkg installed.");
+  return result::Ok();
 }
 
 result::Result uninstall() {
 result::Await("uninstalling pkg.");
-  return result::Ok("pkg uninstalled.");
+  return result::Ok();
 }
 
 result::Result add() {
@@ -24,7 +24,7 @@ result::Await("adding pkg.");
     pkg_add(state.argv[1]);
   }
 
-  return result::Ok("pkg added.");
+  return result::Ok();
 }
 
 result::Result remove() {
@@ -33,10 +33,10 @@ result::Await("removing pkg.");
     return result::Err(ERR_MISSING_OBJECT);
   }
 
-  return result::Ok("pkg removed.");
+  return result::Ok();
 }
 
 result::Result update() {
 result::Await("updating pkg.");
-  return result::Ok("pkg updated.");
+  return result::Ok();
 }

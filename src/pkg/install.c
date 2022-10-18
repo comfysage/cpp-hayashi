@@ -5,12 +5,14 @@ result::Await("cloning pkg.");
   if (path_exists(HAYASHI_ROOT + "/" + pkg.name)) 
     result::Err(ERR_DIR_EXISTS, state.opts.force ? C_IGNORE : C_FAIL);
 
+  result::printf({ "url: ", pkg.url });
+
   if (state.config.shallow_clone) {
     runin(HAYASHI_ROOT, "git clone --depth 1 " + pkg.url + " -o " + pkg.name);
   } else {
     runin(HAYASHI_ROOT, "git clone " + pkg.url + " -o " + pkg.name);
   }
-  return result::Ok("pkg cloned.");
+  return result::Ok();
 }
 
 result::Result pkg_install(std::string name) {
@@ -22,7 +24,7 @@ result::Await("install pkg.");
 
 result::Await("building pkg.");
   runin(HAYASHI_ROOT + "/" + pkg.name, pkg.bash);
-result::Ok("pkg build.");
+result::Ok();
 
-  return result::Ok("pkg installed.");
+  return result::Ok();
 }

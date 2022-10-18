@@ -1,7 +1,7 @@
 #pragma once
 
 #include "util/std.h"
-#include "util/tree.h"
+#include "util/forest.h"
 #include "util/constants.h"
 
 #include "state.h"
@@ -30,8 +30,8 @@ struct Result {
   virtual void toss() { }
   virtual void capture() {
     // printf("\n __ %s __", this->v.c_str());
-    tree::Node n(v, c);
-    state.tree.add(n);
+    forest::Node n(v, c);
+    state.forest.add(n);
   }
 };
 
@@ -45,8 +45,8 @@ struct ResultInfo : Result {
   void toss() { }
   void capture() {
     // printf("\n -- %s --", this->v.c_str());
-    tree::Node n(v, c);
-    state.tree.add(n);
+    forest::Node n(v, c);
+    state.forest.add(n);
   }
 
 };
@@ -55,15 +55,15 @@ ResultInfo Info(std::string v);
 struct ResultAwait : Result {
   const std::string &v;
   int &c = T_NEW;
+  forest::Node n;
 
-  ResultAwait(const std::string &v) : v(v) {
+  ResultAwait(const std::string &v) : v(v), n(v, c) {
     this->capture();
   }
   void toss() { }
   void capture() {
     // printf("\n -- %s --", this->v.c_str());
-    tree::Node n(v, c);
-    state.tree.add(n);
+    state.forest.add(n);
   }
 
 };
@@ -74,14 +74,19 @@ struct ResultOk : Result {
   const std::string &v;
   int &c = C_SUCCESS;
 
+  ResultOk() : v(state.forest.n[state.forest.n.size() - 1].v) {
+    this->toss();
+  }
   ResultOk(const std::string &v) : v(v) {
     this->capture();
   }
-  void toss() { }
+  void toss() {
+    state.forest.toss();
+  }
   void capture() {
     // printf("\n -- %s --", this->v.c_str());
-    tree::Node n(v, c);
-    state.tree.add(n);
+    forest::Node n(v, c);
+    state.forest.add(n);
   }
 };
 ResultOk Ok();
@@ -106,8 +111,8 @@ struct ResultErr : Result {
   }
   void capture() {
     // printf("\n ** %s **", this->v.c_str());
-    tree::Node n(v, c);
-    state.tree.add(n);
+    forest::Node n(v, c);
+    state.forest.add(n);
   }
 };
 ResultErr Err(std::string &v);

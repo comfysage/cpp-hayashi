@@ -10,7 +10,7 @@ result::Await("adding pkg config.");
 
   save_pkg(pkg);
 
-  return result::Ok("added config.");
+  return result::Ok();
 }
 
 result::Result pkg_add(std::string name, std::string url) {
@@ -24,5 +24,5 @@ result::Await("adding url for pkg.");
   pkg.url = url;
   save_pkg(pkg);
 
-  return result::Ok("added url.");
+  return result::Ok();
 }

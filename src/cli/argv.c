@@ -36,5 +36,5 @@ result::Await("parsing arguments.");
   if (state.argv.size() == 0) {
     return result::Err(ERR_MISSING_OBJECT);
   }
-  return result::Ok("args saved to state.");
+  return result::Ok();
 }
