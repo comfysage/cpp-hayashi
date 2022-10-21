@@ -4,6 +4,7 @@
 #include "util/result.h"
 #include "util/constants.h"
 #include "serialization/serializer.h"
+#include "util/ini.h"
 
 struct Pkg {
   std::string name = "";
@@ -26,18 +27,30 @@ Pkg get_pkg(std::string name);
 template <>
 struct Serializer<Pkg> {
   void serialize(const Pkg &t, std::ostream &out) const {
-    Serializer<std::string>().serialize(t.name, out);
-    Serializer<std::string>().serialize(t.url, out);
-    Serializer<std::string>().serialize(t.bash, out);
+    ini::Object object;
+    object.insert("pkg");
+    object.sections[object.currentsection]
+      .insert(ini::tuple_v{"name", t.name});
+    object.sections[object.currentsection]
+      .insert(ini::tuple_v{"url", t.url});
+    object.sections[object.currentsection]
+      .insert(ini::tuple_v{"bash", t.bash});
+    Serializer<ini::Object>().serialize(object, out);
   }
   void deserialize(Pkg &t, std::istream &in) const {
-    Serializer<std::string>().deserialize(t.name, in);
-    Serializer<std::string>().deserialize(t.url, in);
-    // Serializer<std::string>().deserialize(t.bash, in);
-    std::string b;
-    while(in) {
-      Serializer<std::string>().deserialize(b, in);
-      t.bash += b + "\n";
-    }
+    ini::Object object;
+    Serializer<ini::Object>().deserialize(object, in);
+    t.name = std::get<1>(
+        std::get<1>(
+          std::get<1>(
+            object.at("pkg") ).at("name") ));
+    t.url = std::get<1>(
+        std::get<1>(
+          std::get<1>(
+            object.at("pkg") ).at("url") ));
+    t.bash = std::get<1>(
+        std::get<1>(
+          std::get<1>(
+            object.at("pkg") ).at("bash") ));
   }
 };
