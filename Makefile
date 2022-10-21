@@ -28,7 +28,10 @@ clean:
 
 restart: clean ${BIN}
 
+install: ${BIN}
+	cp ${BIN} /usr/bin/hayashi -f
+
 stats: ${SRC_DIR}
 	wc --lines ${SRC_DIR}/**/*.*
 
-.PHONY: run clean restart stats
+.PHONY: run clean restart stats install
