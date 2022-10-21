@@ -104,8 +104,8 @@ struct Forest {
     printf(ANSI_COLOR_RESET "");
 
     n[l].capture();
-    n[l].chars += std::to_string(l);
-    n[l].charc++;
+    /* n[l].chars += std::to_string(l);
+    n[l].charc++; */
 
     this->printfn(n[l].chars);
   }
