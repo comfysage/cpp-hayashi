@@ -19,6 +19,10 @@ result::Await("showing pkg config.");
   // name
   result::printf({ ANSI_COLOR_MAGENTA + pkg.name });
 
+  if (pkg.desc != "") {
+result::printf({ ANSI_COLOR_RESET + pkg.desc });
+  }
+
   // url
   if (pkg.url != "") {
 result::printf({ ANSI_COLOR_CYAN "url  " ANSI_COLOR_RESET + pkg.url });
