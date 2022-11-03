@@ -8,6 +8,7 @@
 
 struct Pkg {
   std::string name = "";
+  std::string desc = "";
   std::string url = "";
   std::string bash = "";
 };
@@ -32,6 +33,8 @@ struct Serializer<Pkg> {
     object.sections[object.currentsection]
       .insert(ini::tuple_v{"name", t.name});
     object.sections[object.currentsection]
+      .insert(ini::tuple_v{"description", t.desc});
+    object.sections[object.currentsection]
       .insert(ini::tuple_v{"url", t.url});
     object.sections[object.currentsection]
       .insert(ini::tuple_v{"bash", t.bash});
@@ -41,6 +44,7 @@ struct Serializer<Pkg> {
     ini::Object object;
     Serializer<ini::Object>().deserialize(object, in);
     t.name = object.get("pkg", "name");
+    t.desc = object.get("pkg", "description");
     t.url = object.get("pkg", "url");
     t.bash = object.get("pkg", "bash");
   }
