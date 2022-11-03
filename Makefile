@@ -22,7 +22,7 @@ CFG_REPO  = ${CFG}/repo/
 all: ${BIN}
 
 ${BIN}: $(OBJ)
-	$(CC) -o ${BIN} $(OBJ)
+	$(CC) -o $@ $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< ${INCLUDE}
@@ -33,7 +33,7 @@ multi:
 
 test: ${BIN}
 	${BIN} show some_pkg
-	# ${BIN} add some_pkg --force
+	${BIN} add some_pkg --force
 
 clean:
 	rm -rf $(BIN) $(OBJ)
