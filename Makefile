@@ -57,6 +57,7 @@ ${CFG_PKG}: ${CFG}
 	mkdir ${CFG_PKG}/custom/
 
 ${CFG_CORE}: ${CFG_PKG}
+	git submodule update --init pkg
 	ln -s ${PKG} ${CFG_CORE}
 
 ${CFG_REPO}:
