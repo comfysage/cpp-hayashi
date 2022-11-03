@@ -9,6 +9,7 @@
 extern std::string STD_RESULT;
 extern std::string ERR_DIR_EXISTS;
 extern std::string ERR_CONFIG_EXISTS;
+extern std::string ERR_CONFIG_NO_EXISTS;
 extern std::string ERR_MISSING_COMMAND;
 extern std::string ERR_MISSING_OBJECT;
 extern std::string ERR_MISSING_COMMAND_AFTER_ORIGIN;

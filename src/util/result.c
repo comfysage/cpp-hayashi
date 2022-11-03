@@ -3,6 +3,7 @@
 std::string STD_RESULT = "";
 std::string ERR_DIR_EXISTS = "dir exists.";
 std::string ERR_CONFIG_EXISTS = "config exists.";
+std::string ERR_CONFIG_NO_EXISTS = "config doesn't exist.";
 std::string ERR_MISSING_COMMAND = "no command specified.";
 std::string ERR_MISSING_OBJECT = "no object specified.";
 std::string ERR_MISSING_COMMAND_AFTER_ORIGIN = 
