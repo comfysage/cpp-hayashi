@@ -59,3 +59,8 @@ Packages are stored in collections. Hayashi includes some base packages in the c
 There are multiple packages included in the repo.
 - [cbonsai](https://gitlab.com/jallbrit/cbonsai). a bonsai tree generator written in C.
 - [neovim](https://github.com/neovim/neovim). Vim-fork focused on extensibility and usability.
+- [fzf](https://github.com/junegunn/fzf). a general-purpose command-line fuzzy finder.
+- [bat](https://github.com/sharkdp/bat). A cat(1) clone with wings.
+- [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh). A delightful framework for managing your zsh configuration.
+- [vim-plug](https://github.com/junegunn/vim-plug). A minimalist Vim plugin manager.
+
