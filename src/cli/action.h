@@ -5,6 +5,7 @@
 
 #include "pkg/install.h"
 #include "pkg/add.h"
+#include "pkg/show.h"
 
 #include "state.h"
 
@@ -19,6 +20,12 @@ result::Result install();
  * obj: **
  */
 result::Result uninstall();
+
+/* # show info about pkg
+ * cmd: show
+ * obj: *
+ */
+result::Result show();
 
 /* # add pkg to manager
  * cmd: origin

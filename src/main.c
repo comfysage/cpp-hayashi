@@ -8,6 +8,9 @@
 result::Result validate_cmd() {
 // result::Await("running command.");
 
+  if (state.cmd == "show") {
+    return show();
+  }
   if (state.cmd == "add") {
     return install();
   }

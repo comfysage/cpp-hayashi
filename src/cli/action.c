@@ -13,6 +13,12 @@ result::Await("uninstalling pkg.");
   return result::Ok();
 }
 
+result::Result show() {
+result::Await("show pkg.");
+  pkg_show(state.argv[0]);
+  return result::Ok();
+}
+
 result::Result add() {
 result::Await("adding pkg.");
   if (state.argv.size() == 1) {
