@@ -3,6 +3,7 @@
 #include "util/std.h"
 #include "util/result.h"
 #include "util/constants.h"
+#include "util/path.h"
 
 #include "util/exec.h"
 
