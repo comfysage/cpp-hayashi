@@ -173,6 +173,12 @@ struct Object {
     }
     this->insert(name);
   }
+
+  std::string get(std::string section, std::string key) {
+    Section s = std::get<1>(this->at(section));
+    tuple_v v = std::get<1>(s.at(key));
+    return v_value(v);
+  }
 };
 
 struct Ini {
