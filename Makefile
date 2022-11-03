@@ -12,6 +12,13 @@ INCLUDE   = -I$(SRC_DIR:./=)
 
 BIN       = ./hayashi.out
 
+CFG       = ~/.hayashi
+CFG_FILE  = ${CFG}/.hayashi
+PKG       = ${PWD}/pkg
+CFG_PKG   = ${CFG}/pkg/
+CFG_CORE  = ${CFG}/pkg/core/
+CFG_REPO  = ${CFG}/repo/
+
 all: ${BIN}
 
 ${BIN}: $(OBJ)
@@ -39,4 +46,22 @@ install: ${BIN}
 stats: ${SRC_DIR}
 	wc --lines ${SRC_DIR}/**/*.*
 
-.PHONY: run clean restart stats install
+${CFG}:
+	mkdir ${CFG}
+
+${CFG_FILE}: ${CFG}
+	touch ${CFG_FILE}
+
+${CFG_PKG}: ${CFG}
+	mkdir ${CFG_PKG}
+	mkdir ${CFG_PKG}/custom/
+
+${CFG_CORE}: ${CFG_PKG}
+	ln -s ${PKG} ${CFG_CORE}
+
+${CFG_REPO}:
+	mkdir ${CFG_REPO}
+
+config: ${CFG_FILE} ${CFG_PKG} ${CFG_REPO}
+
+.PHONY: multi test clean restart install stats config
