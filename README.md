@@ -57,5 +57,5 @@ Packages are stored in collections. Hayashi includes some base packages in the c
 ### Core packages
 
 There are multiple packages included in the repo.
-- [haikufetch](https://github.com/crispybaccoon/haikufetch). *A fork of pfetch*.
-- [neovim](https://github.com/neovim/neovim).
+- [cbonsai](https://gitlab.com/jallbrit/cbonsai). a bonsai tree generator written in C.
+- [neovim](https://github.com/neovim/neovim). Vim-fork focused on extensibility and usability.
