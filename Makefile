@@ -20,8 +20,13 @@ ${BIN}: $(OBJ)
 %.o: %.c
 	$(CC) -o $@ -c $< ${INCLUDE}
 
-run: ${BIN}
-	${BIN} add --verbose some_pkg
+multi:
+	make -j6 $(OBJ)
+	make -j6
+
+test: ${BIN}
+	${BIN} show some_pkg
+	# ${BIN} add some_pkg --force
 
 clean:
 	rm -rf $(BIN) $(OBJ)
