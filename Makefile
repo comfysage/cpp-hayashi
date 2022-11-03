@@ -62,6 +62,6 @@ ${CFG_CORE}: ${CFG_PKG}
 ${CFG_REPO}:
 	mkdir ${CFG_REPO}
 
-config: ${CFG_FILE} ${CFG_PKG} ${CFG_REPO}
+config: ${CFG_FILE} ${CFG_PKG} ${CFG_REPO} ${CFG_CORE}
 
 .PHONY: multi test clean restart install stats config
