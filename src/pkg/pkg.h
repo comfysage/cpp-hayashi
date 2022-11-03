@@ -40,17 +40,8 @@ struct Serializer<Pkg> {
   void deserialize(Pkg &t, std::istream &in) const {
     ini::Object object;
     Serializer<ini::Object>().deserialize(object, in);
-    t.name = std::get<1>(
-        std::get<1>(
-          std::get<1>(
-            object.at("pkg") ).at("name") ));
-    t.url = std::get<1>(
-        std::get<1>(
-          std::get<1>(
-            object.at("pkg") ).at("url") ));
-    t.bash = std::get<1>(
-        std::get<1>(
-          std::get<1>(
-            object.at("pkg") ).at("bash") ));
+    t.name = object.get("pkg", "name");
+    t.url = object.get("pkg", "url");
+    t.bash = object.get("pkg", "bash");
   }
 };
