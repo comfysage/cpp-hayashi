@@ -2,7 +2,7 @@
 
 result::Result save_pkg(struct Pkg pkg) {
 result::ResultAwait a = result::Await("saving pkg config.");
-std::string path = HAYASHI_ROOT + "/." + pkg.name;
+std::string path = path::pkg_cl("custom", pkg.name);
 std::fstream fs;
   fs.open(path, std::fstream::out | std::fstream::trunc);
   if (!fs) {
@@ -15,7 +15,8 @@ std::fstream fs;
 }
 
 Pkg get_pkg(std::string name) {
-std::fstream fs(HAYASHI_ROOT + "/." + name);
+std::string p = path::search_pkg(name);
+std::fstream fs(p);
   Pkg pkg;
   Serializer<Pkg>().deserialize(pkg, fs);
   return pkg;
