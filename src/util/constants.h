@@ -4,6 +4,8 @@
 
 extern std::string HOME;
 extern std::string HAYASHI_ROOT;
+extern std::string PKG_ROOT;
+extern std::string REPO_ROOT;
 
 extern int C_SUCCESS;
 extern int C_FAIL;

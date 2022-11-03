@@ -4,6 +4,10 @@ std::string HOME = std::getenv("HOME");
 
 std::string HAYASHI_ROOT = HOME + "/.hayashi";
 
+std::string PKG_ROOT = HAYASHI_ROOT + "/pkg";
+
+std::string REPO_ROOT = HAYASHI_ROOT + "/repo";
+
 int C_SUCCESS = 0;
 int C_FAIL = 1;
 int C_IGNORE = 2;
