@@ -22,7 +22,8 @@ inline void ltrim(std::basic_string<CharT> & s, const std::locale & loc) {
 template <class CharT>
 inline void rtrim(std::basic_string<CharT> & s, const std::locale & loc) {
   s.erase(std::find_if(s.rbegin(), s.rend(),
-                       [&loc](CharT ch) { return !std::isspace(ch, loc); }).base(),
+                       [&loc](CharT ch) { return !std::isspace(ch, loc);
+                       }).base(),
           s.end());
 }
 
@@ -34,10 +35,13 @@ inline void rtrim2(std::basic_string<CharT>& s, UnaryPredicate pred) {
 // string replacement function based on http://stackoverflow.com/a/3418285
 
 template <class CharT>
-inline bool replace(std::basic_string<CharT> & str, const std::basic_string<CharT> & from, const std::basic_string<CharT> & to) {
+inline bool replace(std::basic_string<CharT> & str, const
+                    std::basic_string<CharT> & from, const
+                    std::basic_string<CharT> & to) {
   auto changed = false;
   size_t start_pos = 0;
-  while ((start_pos = str.find(from, start_pos)) != std::basic_string<CharT>::npos) {
+  while ((start_pos = str.find(from, start_pos)) !=
+    std::basic_string<CharT>::npos) {
     str.replace(start_pos, from.length(), to);
     start_pos += to.length();
     changed = true;
@@ -66,7 +70,8 @@ struct Format {
   const char char_interpol_sep;
   const char char_interpol_end;
 
-  Format(char section_start, char section_end, char assign, char comment, char interpol, char interpol_start, char interpol_sep, char interpol_end)
+  Format(char section_start, char section_end, char assign, char comment, char
+         interpol, char interpol_start, char interpol_sep, char interpol_end)
     : char_section_start(section_start)
     , char_section_end(section_end)
     , char_assign(assign)
@@ -78,11 +83,15 @@ struct Format {
 
   Format() : Format('[', ']', '=', ';', '$', '{', ':', '}') { }
 
-  const std::basic_string<char> local_symbol(const std::basic_string<char>& name) const {
+  const std::basic_string<char> local_symbol(
+    const std::basic_string<char>& name) const {
     return char_interpol + (char_interpol_start + name + char_interpol_end);
   }
 
-  const std::basic_string<char> global_symbol(const std::basic_string<char>& sec_name, const std::basic_string<char>& name) const {
+  const std::basic_string<char> global_symbol(
+    const std::basic_string<char>& sec_name,
+    const std::basic_string<char>& name)
+  const {
     return local_symbol(sec_name + char_interpol_sep + name);
   }
 };
@@ -202,7 +211,9 @@ struct Ini {
       if (length == 0) 
         errors.push_back(line);
 
-      const auto pos = std::find_if(line.begin(), line.end(), [this](char ch) { return format.is_assign(ch); });
+      const auto pos = std::find_if(
+          line.begin(), line.end(), [this](char ch) {
+                                      return format.is_assign(ch); });
       /* auto pos = line.end();
       for (auto iter = line.begin(); iter < line.end(); iter++) {
         if (format->is_assign(*iter)) {
