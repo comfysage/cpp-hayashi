@@ -24,20 +24,14 @@ struct Node {
   }
 
   void capture() {
-
+    if (t == T_SUCCESS || t == T_NEW) return;
     std::string s = "";
 
-    if (t == T_SUCCESS) {
-      s += ANSI_COLOR_GREEN " + ";
-    }
     if (t == T_FAIL) {
       s += ANSI_COLOR_RED " - ";
     }
     if (t == T_IGNORE) {
       s += ANSI_COLOR_BLUE " # ";
-    }
-    if (t == T_NEW) {
-      s += ANSI_COLOR_MAGENTA " * ";
     }
 
     s += v + ANSI_COLOR_RESET;
@@ -57,14 +51,6 @@ struct Forest {
     std::cout << c.c_str();
   }
 
-  void remove(int o) {
-    /* for (int i = 0; i < 0; i++) {
-      std::cout << "\b" << std::flush;
-    } */
-    // printf("\33[2K\r");
-    printf("\33[1A");
-  }
-
   /* Add a node to the stack
    * capture its content
    * present the tree
@@ -76,36 +62,23 @@ struct Forest {
   }
 
   /* Go up tree to last await
-   * save delta to await node
-   * remove delta lines
    * recapture await
-   * present delta lines
    */
   void toss() {
-    std::vector<int> dN;
-
     for (int N = n.size() - 1; N >= 0; N--) {
-      remove(n[N].charc);
       if (n[N].t == T_NEW) {
         this->n[N].t = T_SUCCESS;
         capture(N);
         break;
       }
-      dN.push_back(N);
-    }
-    for (int i = (int) dN.size() - 1; i >= 0; i--) {
-      capture(dN[i]);
     }
   }
 
   void capture(int l) {
-    printf("\n");
-
     printf(ANSI_COLOR_RESET "");
 
     n[l].capture();
-    /* n[l].chars += std::to_string(l);
-    n[l].charc++; */
+    if (n[l].charc > 0) printf("\n");
 
     this->printfn(n[l].chars);
   }
