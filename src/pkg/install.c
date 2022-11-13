@@ -10,8 +10,10 @@
 
 result::Result clone_pkg(Pkg &pkg) {
 result::Await("cloning pkg.");
-  if (path_exists(path::repo(pkg.name))) 
+  if (path_exists(path::repo(pkg.name))) {
     result::Err(ERR_DIR_EXISTS, state.opts.force ? C_IGNORE : C_FAIL);
+    runin(REPO_ROOT, "rm '" + pkg.name + "' -rf");
+  }
 
   std::string s = "";
   s = s + "cloning " + ANSI_COLOR_MAGENTA + pkg.name + ANSI_COLOR_RESET + " from " + ANSI_COLOR_YELLOW + pkg.url + ANSI_COLOR_RESET + " ...";
