@@ -9,10 +9,10 @@
 A pkg is defined in an ini file at one of the [collections](#collections) in `~/.hayashi/pkg/`.
 
 ```ini
-    [pkg]
-    name=pkg_name
-    url=git_url
-    bash=install_script
+[pkg]
+name=pkg_name
+url=git_url
+bash=install_script
 ```
 
 > white space is ignored
