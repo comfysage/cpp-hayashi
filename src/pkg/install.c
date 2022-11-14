@@ -35,6 +35,12 @@ result::Await("install pkg.");
   clone_pkg(pkg);
 
 result::Await("building pkg.");
+  std::string s = "";
+  s = s + "building " + ANSI_COLOR_MAGENTA + pkg.name + ANSI_COLOR_RESET + " at " + ANSI_COLOR_BLUE + path::repo(pkg.name) + ANSI_COLOR_RESET + " ...";
+  result::printf({ s });
+  s = "";
+  s = s + ANSI_COLOR_GREEN + pkg.bash;
+  result::printf({ s });
   runin(path::repo(pkg.name), pkg.bash);
 result::Ok();
 
