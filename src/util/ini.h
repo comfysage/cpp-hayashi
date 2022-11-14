@@ -42,10 +42,10 @@ inline bool replace(std::basic_string<CharT> & str, const
   size_t start_pos = 0;
   while ((start_pos = str.find(from, start_pos)) !=
     std::basic_string<CharT>::npos) {
-    str.replace(start_pos, from.length(), to);
-    start_pos += to.length();
-    changed = true;
-  }
+      str.replace(start_pos, from.length(), to);
+      start_pos += to.length();
+      changed = true;
+    }
   return changed;
 }
 
@@ -114,6 +114,14 @@ struct Section {
   Section(std::string name) : name(name) { }
   Section() : Section("default") { }
 
+  bool has(std::string key) {
+    for (int i = 0; i < (int) var.size(); i++) {
+      if (v_name(var[i]) == key)
+        return true;
+    }
+    return false;
+  }
+
   std::tuple<bool, tuple_v> at(std::string key) {
     for (int i = 0; i < (int) var.size(); i++) {
       if (v_name(var[i]) == key)
@@ -126,7 +134,7 @@ struct Section {
    * else exit
    */
   void insert(tuple_v v) {
-    if (std::get<0>(this->at(v_name(v)))) return;
+    if (has(v_name(v))) return;
     var.push_back(v);
   }
 
@@ -153,6 +161,14 @@ struct Object {
 
   Object() { }
 
+  bool has(std::string key) {
+    for (int i = 0; i < (int) sections.size(); i++) {
+      if (sections[i].name == key)
+        return true;
+    }
+    return false;
+  }
+
   std::tuple<bool, Section> at(std::string key) {
     for (int i = 0; i < (int) sections.size(); i++) {
       if (sections[i].name == key)
@@ -165,7 +181,7 @@ struct Object {
    * else push_back section and set to currentsection
    */
   void insert(std::string name) {
-    if (std::get<0>(this->at(name))) return;
+    if (has(name)) return;
     sections.push_back(Section(name));
     currentsection = sections.size() - 1;
   }
@@ -203,7 +219,6 @@ struct Ini {
 
     std::string line;
     const std::locale loc{"C"};
-
     while (std::getline(in, line)) {
       detail::ltrim(line, loc);
       detail::rtrim(line, loc);
@@ -213,7 +228,7 @@ struct Ini {
 
       const auto pos = std::find_if(
           line.begin(), line.end(), [this](char ch) {
-                                      return format.is_assign(ch); });
+            return format.is_assign(ch); });
       /* auto pos = line.end();
       for (auto iter = line.begin(); iter < line.end(); iter++) {
         if (format->is_assign(*iter)) {
@@ -305,4 +320,3 @@ struct Serializer<ini::Object> {
     t.sections = ini.object.sections;
   }
 };
-
