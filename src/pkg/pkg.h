@@ -4,6 +4,7 @@
 #include "util/result.h"
 #include "util/path.h"
 #include "serialization/serializer.h"
+#include "util/datastruct.h"
 #include "util/ini.h"
 
 struct Pkg {
@@ -30,22 +31,18 @@ struct Serializer<Pkg> {
   void serialize(const Pkg &t, std::ostream &out) const {
     ini::Object object;
     object.insert("pkg");
-    object.sections[object.currentsection]
-      .insert(ini::tuple_v{"name", t.name});
-    object.sections[object.currentsection]
-      .insert(ini::tuple_v{"description", t.desc});
-    object.sections[object.currentsection]
-      .insert(ini::tuple_v{"url", t.url});
-    object.sections[object.currentsection]
-      .insert(ini::tuple_v{"bash", t.bash});
+    IniTuple<std::string>().serialize("name", t.name, object);
+    IniTuple<std::string>().serialize("description", t.desc, object);
+    IniTuple<std::string>().serialize("url", t.url, object);
+    IniTuple<std::string>().serialize("bash", t.bash, object);
     Serializer<ini::Object>().serialize(object, out);
   }
   void deserialize(Pkg &t, std::istream &in) const {
     ini::Object object;
     Serializer<ini::Object>().deserialize(object, in);
-    t.name = object.get("pkg", "name");
-    t.desc = object.get("pkg", "description");
-    t.url = object.get("pkg", "url");
-    t.bash = object.get("pkg", "bash");
+    IniTuple<std::string>().deserialize("pkg", "name", t.name, object);
+    IniTuple<std::string>().deserialize("pkg", "description", t.desc, object);
+    IniTuple<std::string>().deserialize("pkg", "url", t.url, object);
+    IniTuple<std::string>().deserialize("pkg", "bash", t.bash, object);
   }
 };
