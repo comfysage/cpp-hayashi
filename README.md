@@ -45,6 +45,7 @@ You can also specify a git url for the pkg:
 
 	$ cd ~/
     $ git clone --depth 1 https://github.com/CrispyBaccoon/hayashi.git
+    $ cd ~/hayashi
     $ make && sudo make install
     $ make config
 
