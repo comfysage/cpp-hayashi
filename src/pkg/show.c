@@ -27,8 +27,8 @@ result::printf({ ANSI_COLOR_RESET + pkg.desc });
   if (pkg.url != "") {
 result::printf({ ANSI_COLOR_CYAN "url  " ANSI_COLOR_RESET + pkg.url });
   }
-  if (pkg.bash != "") {
-result::printf({ ANSI_COLOR_CYAN "bash " ANSI_COLOR_RESET + pkg.bash });
+  if (pkg.script.install != "") {
+result::printf({ ANSI_COLOR_CYAN "bash " ANSI_COLOR_RESET + pkg.script.install });
   }
 
   result::printf({""});

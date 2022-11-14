@@ -39,9 +39,9 @@ result::Await("building pkg.");
   s = s + "building " + ANSI_COLOR_MAGENTA + pkg.name + ANSI_COLOR_RESET + " at " + ANSI_COLOR_BLUE + path::repo(pkg.name) + ANSI_COLOR_RESET + " ...";
   result::printf({ s });
   s = "";
-  s = s + ANSI_COLOR_GREEN + pkg.bash;
+  s = s + ANSI_COLOR_GREEN + pkg.script.install;
   result::printf({ s });
-  runin(path::repo(pkg.name), pkg.bash);
+  runin(path::repo(pkg.name), pkg.script.install);
 result::Ok();
 
   return result::Ok();

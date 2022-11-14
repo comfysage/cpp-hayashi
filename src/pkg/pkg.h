@@ -11,7 +11,11 @@ struct Pkg {
   std::string name = "";
   std::string desc = "";
   std::string url = "";
-  std::string bash = "";
+  struct Script {
+  std::string install = "";
+  std::string remove = "";
+  std::string update = "";
+  } script;
 };
 
 /* struct -> json|ini|yaml
@@ -34,7 +38,10 @@ struct Serializer<Pkg> {
     IniTuple<std::string>().serialize("name", t.name, object);
     IniTuple<std::string>().serialize("description", t.desc, object);
     IniTuple<std::string>().serialize("url", t.url, object);
-    IniTuple<std::string>().serialize("bash", t.bash, object);
+    object.insert("script");
+    IniTuple<std::string>().serialize("install", t.script.install, object);
+    IniTuple<std::string>().serialize("remove", t.script.remove, object);
+    IniTuple<std::string>().serialize("update", t.script.update, object);
     Serializer<ini::Object>().serialize(object, out);
   }
   void deserialize(Pkg &t, std::istream &in) const {
@@ -43,6 +50,8 @@ struct Serializer<Pkg> {
     IniTuple<std::string>().deserialize("pkg", "name", t.name, object);
     IniTuple<std::string>().deserialize("pkg", "description", t.desc, object);
     IniTuple<std::string>().deserialize("pkg", "url", t.url, object);
-    IniTuple<std::string>().deserialize("pkg", "bash", t.bash, object);
+    IniTuple<std::string>().deserialize("script", "install", t.script.install, object);
+    IniTuple<std::string>().deserialize("script", "remove", t.script.remove, object);
+    IniTuple<std::string>().deserialize("script", "update", t.script.update, object);
   }
 };
