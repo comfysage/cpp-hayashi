@@ -16,4 +16,4 @@
  */
 result::Result pkg_add(std::string name);
 
-result::Result pkg_add(std::string name, std::string bash);
+result::Result pkg_add(std::string name, std::string url);
