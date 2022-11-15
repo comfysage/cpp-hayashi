@@ -11,7 +11,7 @@
 #include "data/management.h"
 #include "state.h"
 
-result::Result clone_pkg(std::string name);
+result::Result clone_pkg(Pkg &pkg);
 
 /* # installs pkg by name
  * - reads config
