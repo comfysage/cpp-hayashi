@@ -24,11 +24,15 @@ result::Await("adding pkg.");
   if (state.argv.size() == 1) {
     return result::Err(ERR_MISSING_OBJECT);
   }
+
+  Pkg pkg;
+  pkg.name = state.argv[1];
+  
   if (state.argv.size() == 3) {
-    pkg_add(state.argv[1], state.argv[2]);
-  } else {
-    pkg_add(state.argv[1]);
+    pkg.url = state.argv[2];
   }
+
+  pkg_add(pkg);
 
   return result::Ok();
 }

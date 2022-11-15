@@ -14,6 +14,4 @@
  * - writes config
  * - (optionaly) adds bash
  */
-result::Result pkg_add(std::string name);
-
-result::Result pkg_add(std::string name, std::string url);
+result::Result pkg_add(Pkg pkg);
