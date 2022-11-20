@@ -31,7 +31,5 @@ result::printf({ ANSI_COLOR_CYAN "url  " ANSI_COLOR_RESET + pkg.url });
 result::printf({ ANSI_COLOR_CYAN "bash " ANSI_COLOR_RESET + pkg.script.install });
   }
 
-  result::printf({""});
-
   return result::Ok();
 }
