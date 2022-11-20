@@ -14,7 +14,7 @@ extern std::string ERR_MISSING_COMMAND;
 extern std::string ERR_MISSING_OBJECT;
 extern std::string ERR_MISSING_COMMAND_AFTER_ORIGIN;
 extern std::string ERR_INVALID_COMMAND;
-extern std::string ERR_DIR_EXISTS;
+extern std::string ERR_PKG_NOT_INSTALLED;
 
 namespace result {
 

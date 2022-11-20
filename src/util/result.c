@@ -9,6 +9,7 @@ std::string ERR_MISSING_OBJECT = "no object specified.";
 std::string ERR_MISSING_COMMAND_AFTER_ORIGIN = 
   "unqualified command after pkg.";
 std::string ERR_INVALID_COMMAND = "unqualified command.";
+std::string ERR_PKG_NOT_INSTALLED = "pkg is not installed.";
 
 void result::toss_process() {
   // throw std::runtime_error(v);

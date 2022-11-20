@@ -48,5 +48,9 @@ result::Await("removing pkg.");
 
 result::Result update() {
 result::Await("updating pkg.");
+  for (size_t i = 0; i < state.argv.size(); i++) {
+    Pkg pkg = get_pkg(state.argv[i]);
+    pkg_update(pkg);
+  }
   return result::Ok();
 }
