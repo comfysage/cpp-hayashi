@@ -49,7 +49,5 @@ std::vector<std::string> args(argv, argv + argc);
 
   validate_cmd();
 
-  printf("\n");
-
   return 0;
 }
