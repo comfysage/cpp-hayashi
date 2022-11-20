@@ -78,9 +78,10 @@ struct Forest {
     printf(ANSI_COLOR_RESET "");
 
     n[l].capture();
-    if (n[l].charc > 0) printf("\n");
 
     this->printfn(n[l].chars);
+
+    if (n[l].charc > 0) printf("\n");
   }
 
 };
