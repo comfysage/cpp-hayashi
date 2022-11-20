@@ -4,7 +4,7 @@ result::Result fetch_pkg(Pkg &pkg) {
 result::Await("fetching pkg.");
 
   if (!path_exists(path::repo(pkg.name))) {
-    return result::Err(ERR_PKG_NOT_INSTALLED, C_FAIL);
+    return pkg_install(pkg.name);
   }
 
 std::string s = "";
@@ -29,5 +29,5 @@ result::Result pkg_update(Pkg pkg) {
       return fetch_pkg(pkg);
     }
 
-    return result::Err(ERR_PKG_NOT_INSTALLED, C_FAIL);
+    return pkg_install(pkg.name);
   }
