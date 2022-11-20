@@ -33,8 +33,12 @@ multi:
 	make -j6
 
 test: ${BIN}
-	${BIN} show some_pkg
-	${BIN} add some_pkg --force
+	@echo "\033[01;35m$$\033[0m ${NAME} show some_pkg"
+	@${BIN} show some_pkg
+	@echo "\033[01;35m$$\033[0m ${NAME} add some_pkg"
+	@${BIN} add some_pkg --force
+	@echo "\033[01;35m$$\033[0m ${NAME} update some_pkg"
+	@${BIN} update some_pkg
 
 clean:
 	rm -rf $(BIN) $(OBJ)
