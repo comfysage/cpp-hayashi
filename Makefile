@@ -10,10 +10,11 @@ OBJ       = $(SRC:.c=.o)
 MAIN      = ${SRC_DIR}/main.c
 INCLUDE   = -I$(SRC_DIR:./=)
 
-BIN       = ./hayashi.out
+NAME      = hayashi
+BIN       = ./${NAME}.out
 
-CFG       = ~/.hayashi
-CFG_FILE  = ${CFG}/.hayashi
+CFG       = ~/.${NAME}
+CFG_FILE  = ${CFG}/.${NAME}
 PKG       = ${PWD}/pkg
 CFG_PKG   = ${CFG}/pkg/
 CFG_CORE  = ${CFG}/pkg/core/
@@ -41,7 +42,7 @@ clean:
 restart: clean ${BIN}
 
 install: ${BIN}
-	cp ${BIN} /usr/bin/hayashi -f
+	cp ${BIN} /usr/bin/${NAME} -f
 
 stats: ${SRC_DIR}
 	wc --lines ${SRC_DIR}/**/*.*
