@@ -5,6 +5,7 @@
 
 #include "pkg/install.h"
 #include "pkg/add.h"
+#include "pkg/remove.h"
 #include "pkg/update.h"
 #include "pkg/show.h"
 

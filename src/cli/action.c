@@ -42,6 +42,10 @@ result::Await("removing pkg.");
   if (state.argv.size() == 1) {
     return result::Err(ERR_MISSING_OBJECT);
   }
+  Pkg pkg;
+  pkg.name = state.argv[1];
+
+  pkg_remove(pkg);
 
   return result::Ok();
 }
