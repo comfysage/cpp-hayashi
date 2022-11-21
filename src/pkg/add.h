@@ -10,8 +10,8 @@
 #include "data/management.h"
 #include "state.h"
 
-/* # adds config for pkg by name
- * - writes config
- * - (optionaly) adds bash
+/* # adds config with pkg under custom collection
+ * - checks for existence of config
+ * - writes config file
  */
 result::Result pkg_add(Pkg pkg);
