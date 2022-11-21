@@ -98,10 +98,14 @@ struct Format {
 
 typedef std::tuple<std::string, std::string> tuple_v;
 
+/* # get variable name from tuple_v
+ */
 inline std::string v_name(tuple_v &v) {
   return std::get<0>(v);
 }
 
+/* # get variable value from tuple_v
+ */
 inline std::string v_value(tuple_v &v) {
   return std::get<1>(v);
 }
