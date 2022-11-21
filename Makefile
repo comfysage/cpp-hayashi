@@ -40,6 +40,14 @@ test: ${BIN}
 	@echo "\033[01;35m$$\033[0m ${NAME} update some_pkg"
 	@${BIN} update some_pkg
 
+pkg_test: ${BIN}
+	@echo "\033[01;35m$$\033[0m ${NAME} pkg add pkg_name"
+	@${BIN} pkg add pkg_name
+	@echo "\033[01;35m$$\033[0m ${NAME} show pkg_name"
+	@${BIN} show pkg_name
+	@echo "\033[01;35m$$\033[0m ${NAME} pkg remove pkg_name"
+	@${BIN} pkg remove pkg_name
+
 clean:
 	rm -rf $(BIN) $(OBJ)
 
