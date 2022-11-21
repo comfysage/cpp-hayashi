@@ -11,11 +11,15 @@
 #include "data/management.h"
 #include "state.h"
 
+/* # clones pkg
+ * - checks for existence of cloned repo
+ * - clones pkg from url
+ * */
 result::Result clone_pkg(Pkg &pkg);
 
 /* # installs pkg by name
- * - reads config
+ * - reads pkg
  * - clones git url
- * - runs bash script
+ * - runs install script
  */
 result::Result pkg_install(std::string name);
