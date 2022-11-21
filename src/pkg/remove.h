@@ -7,4 +7,8 @@
 #include "util/exec.h"
 #include "pkg/pkg.h"
 
+/* # removes custom pkg
+ * - checks for existence of pkg config
+ * - removes pkg config file
+ */
 result::Result pkg_remove(Pkg pkg);
