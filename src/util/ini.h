@@ -118,6 +118,9 @@ struct Section {
   Section(std::string name) : name(name) { }
   Section() : Section("default") { }
 
+  /* # get variable by key in section
+   * checks for existence of variable with key in vector
+   * */
   bool has(std::string key) {
     for (int i = 0; i < (int) var.size(); i++) {
       if (v_name(var[i]) == key)
@@ -126,6 +129,11 @@ struct Section {
     return false;
   }
 
+  /* # return variable with key in section
+   * - checks for existence of variable with key in vector,
+   *   when found returns positive tuple with variable
+   * - returns negative tuple with empty variable
+   * */
   std::tuple<bool, tuple_v> at(std::string key) {
     for (int i = 0; i < (int) var.size(); i++) {
       if (v_name(var[i]) == key)
@@ -134,7 +142,8 @@ struct Section {
     return std::make_tuple(false, tuple_v{"",""});
   }
 
-  /* if variable doesnt exist, add variable
+  /* # insert variable in section
+   * if variable does not exist, add variable
    * else exit
    */
   void insert(tuple_v v) {
@@ -142,7 +151,8 @@ struct Section {
     var.push_back(v);
   }
 
-  /* if variable exists, override variable
+  /* # override variable in section
+   * if variable exists, override variable
    * else add the variable
    */
   void override(tuple_v v) {
