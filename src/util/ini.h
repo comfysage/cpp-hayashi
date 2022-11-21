@@ -175,6 +175,9 @@ struct Object {
 
   Object() { }
 
+  /* # get section by name in object
+   * checks for existence of section with name in vector
+   * */
   bool has(std::string key) {
     for (int i = 0; i < (int) sections.size(); i++) {
       if (sections[i].name == key)
@@ -183,6 +186,11 @@ struct Object {
     return false;
   }
 
+  /* # return copy of section with name in object
+   * - checks for existence of section with name in object,
+   *   when found returns positive tuple with copy of section
+   * - returns negative tuple with copy of defaultsection
+   * */
   std::tuple<bool, Section> at(std::string key) {
     for (int i = 0; i < (int) sections.size(); i++) {
       if (sections[i].name == key)
@@ -191,8 +199,9 @@ struct Object {
     return std::make_tuple(false, defaultsection);
   }
 
-  /* if section exists, exit
-   * else push_back section and set to currentsection
+  /* # inserts new section with name
+   * if section exists, exit
+   * else push_back new section and set currentsection to last index
    */
   void insert(std::string name) {
     if (has(name)) return;
@@ -200,8 +209,9 @@ struct Object {
     currentsection = sections.size() - 1;
   }
 
-  /* if section exists, set to currentsection
-   * else push_back section and set to currentsection
+  /* # override existing section with name
+   * if section exists, set currentsection to appropriate index
+   * else push_back new section and set currentsection to last index
    */
   void override(std::string name) {
     for (int i = 0; i < (int) sections.size(); i++) {
