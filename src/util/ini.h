@@ -223,6 +223,11 @@ struct Object {
     this->insert(name);
   }
 
+  /* # get value of variable at key in section with name
+   * - gets copy of section with name or defaultsection
+   * - gets copy of variable with key in section or empty variable
+   * - returns value of variable
+   * */
   std::string get(std::string section, std::string key) {
     Section s = std::get<1>(this->at(section));
     tuple_v v = std::get<1>(s.at(key));
