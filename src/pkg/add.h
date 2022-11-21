@@ -12,6 +12,6 @@
 
 /* # adds config for pkg by name
  * - writes config
- * - (optionaly) adds bash
+ * - (optionally) adds bash
  */
 result::Result pkg_add(Pkg pkg);

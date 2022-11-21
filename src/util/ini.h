@@ -130,7 +130,7 @@ struct Section {
     return std::make_tuple(false, tuple_v{"",""});
   }
 
-  /* if variable doesnt exist, add variable
+  /* if variable doesn't exist, add variable
    * else exit
    */
   void insert(tuple_v v) {
