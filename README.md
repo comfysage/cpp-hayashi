@@ -40,9 +40,17 @@ You can also specify a git url for the pkg:
 
     $ hayashi pkg add pkg_name git_url
 
+### Removing a pkg config
+
+    $ hayashi pkg remove pkg_name
+
 ### Showing info about a pkg
 
 	$ hayashi show pkg_name
+
+### Updating a pkg
+
+    $ hayashi update pkg_name
 
 ## Installation
 
