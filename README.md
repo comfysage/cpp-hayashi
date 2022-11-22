@@ -11,8 +11,13 @@ A pkg is defined in an ini file at one of the [collections](#collections) in `~/
 ```ini
 [pkg]
 name=pkg_name
+description=description
 url=git_url
-bash=install_script
+
+[script]
+install=install_script
+update=update_script
+remove=remove_script
 ```
 
 > white space is ignored
