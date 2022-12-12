@@ -299,8 +299,8 @@ struct Serializer<ini::tuple_v> {
   void serialize(const ini::tuple_v &t, std::ostream &out) const {
     std::string t_name = std::get<0>(t);
     std::string t_value = std::get<1>(t);
-    std::string name = t_name == "" ? "null" : t_name;
-    std::string value = t_value == "" ? "null" : t_value;
+    std::string name = t_name;
+    std::string value = t_value;
     std::string v = name + "=" + value;
     Serializer<std::string>().serialize(v, out);
   }
