@@ -23,10 +23,12 @@ CFG_REPO  = ${CFG}/repo/
 all: ${BIN}
 
 ${BIN}: $(OBJ)
-	$(CC) -o $@ $^
+	@echo "CC \033[01;35m$^\033[01;37m >> \033[01;35m$@\033[0m"
+	@$(CC) -o $@ $^
 
 %.o: %.c
-	$(CC) -o $@ -c $< ${INCLUDE}
+	@echo "CC \033[01;35m$<\033[01;37m >> \033[01;35m$@\033[01;37m [with ${INCLUDE}]\033[0m"
+	@$(CC) -o $@ -c $< ${INCLUDE}
 
 multi:
 	make -j6 $(OBJ)
