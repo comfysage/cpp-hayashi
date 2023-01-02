@@ -2,7 +2,7 @@
 
 int run(std::string code) {
   // std::array<char, 128> buffer;
-std::string line = code + "> /dev/null 2>&1";
+std::string line = code + (state.opts.verbose ? "" : "> /dev/null 2>&1");
 std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(line.c_str(), "r"), pclose);
   if (!pipe) {
     throw std::runtime_error("popen() failed!");
