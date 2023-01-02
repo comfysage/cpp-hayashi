@@ -11,7 +11,7 @@ result::Result validate_cmd() {
   if (state.cmd == "show" || state.cmd == "info") {
     return show();
   }
-  if (state.cmd == "add") {
+  if (state.cmd == "add" || state.cmd == "install") {
     return install();
   }
   if (state.cmd == "remove") {
