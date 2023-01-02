@@ -14,7 +14,7 @@ result::Result validate_cmd() {
   if (state.cmd == "add" || state.cmd == "install") {
     return install();
   }
-  if (state.cmd == "remove") {
+  if (state.cmd == "remove" || state.cmd == "uninstall") {
     return uninstall();
   }
   if (state.cmd == "update") {
