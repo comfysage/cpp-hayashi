@@ -8,7 +8,7 @@
 result::Result validate_cmd() {
 // result::Await("running command.");
 
-  if (state.cmd == "show") {
+  if (state.cmd == "show" || state.cmd == "info") {
     return show();
   }
   if (state.cmd == "add") {
